@@ -135,11 +135,14 @@ public class ModelManager implements Model {
         filteredPersons.setPredicate(predicate);
     }
 
+
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate1, Predicate<Person> predicate2) {
-        requireNonNull(predicate1);
-        requireNonNull(predicate2);;
-        filteredPersons.setPredicate(person -> predicate1.test(person) && predicate2.test(person));
+    public void updateFilteredPersonList(List<Predicate<Person>> predicatesList) {
+        requireNonNull(predicatesList);
+        Predicate<Person> combinedPredicate = predicatesList.stream()
+                .reduce(Predicate::and)
+                .orElse(person -> true);
+        filteredPersons.setPredicate(combinedPredicate);
     }
 
     //  TODO: fix the sorting

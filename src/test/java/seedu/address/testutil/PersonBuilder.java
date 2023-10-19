@@ -146,7 +146,6 @@ public class PersonBuilder {
         default:
             this.status.setStatusType(StatusTypes.PRELIMINARY);
         }
-        System.out.println(this.status);
         return this;
     }
 

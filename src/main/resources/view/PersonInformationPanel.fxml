@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
@@ -12,17 +11,81 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.layout.StackPane?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.shape.Rectangle?>
+<ListView id="personInformationPanel" fx:id="personListPanelPlaceholder" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS" GridPane.columnIndex="0" spacing="10">
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" GridPane.columnIndex="0" >
+            <padding>
+                <Insets top="10" />
+            </padding>
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="60">
+                <Label text="Name: " styleClass="cell_big_label" wrapText="true" />
+                <Label fx:id="name" text="\$first" styleClass="text-field" wrapText="true" minWidth="100"
+                       alignment="CENTER" />
+            </HBox>
+
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="60">
+                <Label text="Phone: " styleClass="cell_big_label" wrapText="true" />
+                <Label fx:id="phone" styleClass="text-field" text="\$phone" wrapText="true" minWidth="100"
+                       alignment="CENTER" />
+            </HBox>
+        </HBox>
 
 
-<ListView id="personInformationPanel"  fx:id="personListPanelPlaceholder" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-        <VBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS" GridPane.columnIndex="0">
-            <Label fx:id="name" text="\$first" styleClass="cell_big_label" wrapText="true" />
+
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" GridPane.columnIndex="0" spacing="100">
+            <Label text="Email: " styleClass="cell_big_label" wrapText="true" />
+            <Label fx:id="email" styleClass="text-field" text="\$email" wrapText="true"  prefWidth="300"
+                   alignment="CENTER"/>
+        </HBox>
+
+
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" GridPane.columnIndex="0" spacing="82">
+            <Label text="Address: " styleClass="cell_big_label" wrapText="true" />
+            <Label fx:id="address" styleClass="text-field" text="\$address" wrapText="true" prefWidth="300"
+                   alignment="CENTER"/>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="10" >
+            <Label text="Tags: " styleClass="cell_big_label" wrapText="true" />
             <FlowPane fx:id="tags" />
-            <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" wrapText="true" />
-            <Label fx:id="address" styleClass="cell_small_label" text="\$address" wrapText="true" />
-            <Label fx:id="email" styleClass="cell_small_label" text="\$email" wrapText="true" />
-            <Label fx:id="remark" styleClass="cell_small_label" text="\$remark" wrapText="true" prefWidth="500"/>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="10" >
+            <Label text="LinkedIn: " styleClass="cell_big_label" wrapText="true" />
+            <Label fx:id="linkedIn" styleClass="text-field" text="\$linkedIn" wrapText="true" prefWidth="300"
+            alignment="CENTER"/>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="10" >
+            <Label text="Github: " styleClass="cell_big_label" wrapText="true" />
+            <Label fx:id="github" styleClass="text-field" text="\$github" wrapText="true" prefWidth="300"
+                   alignment="CENTER"/>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" GridPane.columnIndex="0" spacing="0">
+            <padding>
+                <Insets left="10" />
+            </padding>
+            <ToggleButton fx:id="preliminary" text="Preliminary" styleClass="stage-button" />
+            <Rectangle styleClass="connection-line" width="120" strokeWidth="1"/>
+            <ToggleButton fx:id="interviewed" text="Interviewed" styleClass="stage-button" />
+            <Rectangle styleClass="connection-line" width="120" strokeWidth="1"/>
+            <ToggleButton fx:id="status" text="\$status" styleClass="stage-button" />
+        </HBox>
+
+        <VBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS" GridPane.columnIndex="0">
+            <Label text="Remark: " styleClass="cell_big_label" wrapText="true" />
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets left="10" />
+                </padding>
+            <Label fx:id="remark" styleClass="text-field" text="\$remark" wrapText="true" prefWidth="450"
+            minHeight="250"  />
+            </HBox>
         </VBox>
+    </VBox>
 </ListView>

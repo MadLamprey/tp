@@ -113,21 +113,21 @@ Examples:
 
 Adds the username for their social profile [LinkedIn/Github] to the existing contact details of users
 
-Format: `add linkedin INDEX USERNAME` or `add github INDEX USERNAME`
+Format: `addL INDEX u/USERNAME` or `addG INDEX u/USERNAME`
 
 Examples:
-* `add github 2 MadLamprey`
-* `add linkedin 4 aditya-misra`
+* `addG 2 u/MadLamprey`
+* `addL 4 u/aditya-misra`
 
 ### Opening user LinkedIn or GitHub account: 'linkedin' or 'github'
 
 Redirect user to candidate's LinkedIn or Github account
 
-Format: `linkedin NAME` or `github NAME`
+Format: `linkedin INDEX` or `github INDEX`
 
 Examples:
-* `linkedin Alex Yeoh`
-* `github Bernice Sanders`
+* `linkedin 1`
+* `github 2`
 
 ### Listing all persons : `list`
 
@@ -285,8 +285,8 @@ Action                     | Format, Examples
 ---------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Add**                    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
 **Remark**                 | `remark r/REMARK` <br> e.g., `remark 1 r/Great attitude, hardworking`
-**Add Github/LinkedIn**    | `add linkedin INDEX USERNAME` or `add github INDEX USERNAME` e.g., `add linkedin 1 alex-yeoh`, `add github 2 bernicesanders123`
-**Open Github/LinkedIn**   | `linkedin NAME` or `github NAME` e.g., `linkedin Alex Yeoh`, `github Bernice Sanders`
+**Add Github/LinkedIn**    | `addL INDEX u/USERNAME` or `addG INDEX u/USERNAME` e.g., `addL 1 u/alex-yeoh`, `addG 2 u/bernicesanders123`
+**Open Github/LinkedIn**   | `linkedin INDEX` or `github INDEX` e.g., `linkedin 1`, `github 2`
 **Clear**                  | `clear`
 **Delete**                 | `delete INDEX`<br> e.g., `delete 3`
 **Set**                    | `set INDEX STATUS`<br> e.g., `set 2 Interviewed`

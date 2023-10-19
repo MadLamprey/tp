@@ -4,16 +4,17 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_STATUS;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.StatusContainsKeywordsPredicate;
-
-
 
 
 /**
@@ -30,7 +31,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_STATUS);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME)
+        if (!(arePrefixesPresent(argMultimap, PREFIX_NAME) || arePrefixesPresent(argMultimap, PREFIX_STATUS))
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
@@ -40,8 +41,20 @@ public class FindCommandParser implements Parser<FindCommand> {
         String[] nameKeywords = parseKeywordsList(argMultimap.getAllValues(PREFIX_NAME));
         String[] statusKeywords = parseKeywordsList(argMultimap.getAllValues(PREFIX_STATUS));
 
-        return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)),
-                new StatusContainsKeywordsPredicate(Arrays.asList(statusKeywords)));
+        NameContainsKeywordsPredicate namePredicate = new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords));
+        StatusContainsKeywordsPredicate statusPredicate = new StatusContainsKeywordsPredicate(
+                Arrays.asList(statusKeywords));
+
+        List<Predicate<Person>> predicatesList = new ArrayList<>() {{
+                if (!nameKeywords[0].isEmpty()) {
+                    add(namePredicate);
+                }
+                if (!statusKeywords[0].isEmpty()) {
+                    add(statusPredicate);
+                }
+            }};
+
+        return new FindCommand(predicatesList);
     }
 
     /**

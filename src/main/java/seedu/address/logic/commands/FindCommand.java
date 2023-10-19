@@ -2,12 +2,13 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.List;
+import java.util.function.Predicate;
+
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.NameContainsKeywordsPredicate;
-import seedu.address.model.person.Status;
-import seedu.address.model.person.StatusContainsKeywordsPredicate;
+import seedu.address.model.person.Person;
 
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
@@ -17,32 +18,28 @@ public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "search";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
-            + "the name keywords (case-insensitive) and (if specified) whose status contain any of the status"
-            + "keywords (case-insensitive) and displays them as a list with index numbers.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Searches users by categories (e.g. name, status) "
+            + "whose details match the given keywords (case-insensitive) "
+            + "and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " n/alex bernice s/interviewed";
+            + "Example: " + COMMAND_WORD + " n/alex bernice st/interviewed";
 
-    private final NameContainsKeywordsPredicate namePredicate;
-    private final StatusContainsKeywordsPredicate statusPredicate;
+
+    private final List<Predicate<Person>> predicatesList;
 
     /**
      * Creates an FindCommand to find the specified {@code Person}
      */
-    public FindCommand(NameContainsKeywordsPredicate namePredicate, StatusContainsKeywordsPredicate statusPredicate) {
-        this.namePredicate = namePredicate;
-        this.statusPredicate = statusPredicate;
+    public FindCommand(List<Predicate<Person>> predicatesList) {
+        this.predicatesList = predicatesList;
     }
 
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        if (!Status.isValidStatus(statusPredicate.toString())) {
-            model.updateFilteredPersonList(namePredicate);
-        } else {
-            model.updateFilteredPersonList(namePredicate, statusPredicate);
-        }
+        model.updateFilteredPersonList(predicatesList);
+
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }
@@ -59,19 +56,23 @@ public class FindCommand extends Command {
         }
 
         FindCommand otherFindCommand = (FindCommand) other;
-        if (Status.isValidStatus(statusPredicate.toString())) {
-            return namePredicate.equals(otherFindCommand.namePredicate)
-                    && statusPredicate.equals(otherFindCommand.statusPredicate);
-        }
-        return namePredicate.equals(otherFindCommand.namePredicate);
+        Boolean isListEqual = false;
+        List<Predicate<Person>> otherPredicates = otherFindCommand.predicatesList;
 
+        if (predicatesList.size() != otherPredicates.size()) {
+            return false;
+        }
+
+        for (int i = 0; i < predicatesList.size(); i++) {
+            isListEqual = predicatesList.get(i).equals(otherPredicates.get(i));
+        }
+        return isListEqual;
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("name predicate", namePredicate)
-                .add("status predicate", statusPredicate)
+                .add("predicates list", predicatesList)
                 .toString();
     }
 }

@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -161,9 +162,8 @@ public class AddCommandTest {
         }
 
         @Override
-        public void updateFilteredPersonList(Predicate<Person> predicate1, Predicate<Person> predicate2) {
+        public void updateFilteredPersonList(List<Predicate<Person>> predicatesList) {
             throw new AssertionError("This method should not be called.");
-
         }
 
         @Override

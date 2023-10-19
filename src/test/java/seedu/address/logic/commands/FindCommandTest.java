@@ -12,6 +12,8 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +21,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.StatusContainsKeywordsPredicate;
 
 /**
@@ -39,14 +42,17 @@ public class FindCommandTest {
         StatusContainsKeywordsPredicate secondStatusPredicate =
                 new StatusContainsKeywordsPredicate(Collections.singletonList("secondStatus"));
 
-        FindCommand findFirstCommand = new FindCommand(firstNamePredicate, firstStatusPredicate);
-        FindCommand findSecondCommand = new FindCommand(secondNamePredicate, secondStatusPredicate);
+        List<Predicate<Person>> firstPredicatesList = Arrays.asList(firstNamePredicate, firstStatusPredicate);
+        List<Predicate<Person>> secondPredicatesList = Arrays.asList(secondNamePredicate, secondStatusPredicate);
+
+        FindCommand findFirstCommand = new FindCommand(firstPredicatesList);
+        FindCommand findSecondCommand = new FindCommand(secondPredicatesList);
 
         // same object -> returns true
         assertTrue(findFirstCommand.equals(findFirstCommand));
 
         // same values -> returns true
-        FindCommand findFirstCommandCopy = new FindCommand(firstNamePredicate, firstStatusPredicate);
+        FindCommand findFirstCommandCopy = new FindCommand(firstPredicatesList);
         assertTrue(findFirstCommand.equals(findFirstCommandCopy));
 
         // different types -> returns false
@@ -64,7 +70,7 @@ public class FindCommandTest {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
         NameContainsKeywordsPredicate namePredicate = prepareNamePredicate(" ");
         StatusContainsKeywordsPredicate statusPredicate = prepareStatusPredicate("");
-        FindCommand command = new FindCommand(namePredicate, statusPredicate);
+        FindCommand command = new FindCommand(Arrays.asList(namePredicate, statusPredicate));
         expectedModel.updateFilteredPersonList(namePredicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Collections.emptyList(), model.getFilteredPersonList());
@@ -75,9 +81,8 @@ public class FindCommandTest {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
         NameContainsKeywordsPredicate namePredicate = prepareNamePredicate("Kurz Elle Kunz");
         StatusContainsKeywordsPredicate statusPredicate = prepareStatusPredicate("Preliminary");
-        FindCommand command = new FindCommand(namePredicate, statusPredicate);
-        expectedModel.updateFilteredPersonList(namePredicate, statusPredicate);
-        System.out.println(expectedModel.getAddressBook());
+        FindCommand command = new FindCommand(Arrays.asList(namePredicate, statusPredicate));
+        expectedModel.updateFilteredPersonList(Arrays.asList(namePredicate, statusPredicate));
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredPersonList());
     }
@@ -87,9 +92,9 @@ public class FindCommandTest {
     public void toStringMethod() {
         NameContainsKeywordsPredicate namePredicate = new NameContainsKeywordsPredicate(Arrays.asList("keyword"));
         StatusContainsKeywordsPredicate statusPredicate = new StatusContainsKeywordsPredicate(Arrays.asList("keyword"));
-        FindCommand findCommand = new FindCommand(namePredicate, statusPredicate);
-        String expected = FindCommand.class.getCanonicalName() + "{name predicate=" + namePredicate
-                + ", status predicate=" + statusPredicate + "}";
+        FindCommand findCommand = new FindCommand(Arrays.asList(namePredicate, statusPredicate));
+        String expected = FindCommand.class.getCanonicalName() + "{predicates list=[" + namePredicate + ", "
+                + statusPredicate + "]}";
         assertEquals(expected, findCommand.toString());
     }
 
