@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -47,5 +48,27 @@ public class GithubCommand extends Command {
         }
 
         return new CommandResult(MESSAGE_SUCCESS);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof GithubCommand)) {
+            return false;
+        }
+
+        GithubCommand otherGithubCommand = (GithubCommand) other;
+        return this.index.equals(otherGithubCommand.index);
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("index", index)
+                .toString();
     }
 }
