@@ -15,6 +15,8 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
+import seedu.address.model.person.Github;
+import seedu.address.model.person.LinkedIn;
 import seedu.address.model.person.Person;
 
 /**
@@ -116,6 +118,22 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedPerson);
 
         addressBook.setPerson(target, editedPerson);
+    }
+
+    @Override
+    public void addGithub(Index index, Github github) {
+        Person personToEdit = getFilteredPersonList().get(index.getZeroBased());
+        personToEdit.setGithub(github);
+        setPerson(personToEdit, personToEdit);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    }
+
+    @Override
+    public void addLinkedIn(Index index, LinkedIn linkedIn) {
+        Person personToEdit = getFilteredPersonList().get(index.getZeroBased());
+        personToEdit.setLinkedIn(linkedIn);
+        setPerson(personToEdit, personToEdit);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     //=========== Filtered Person List Accessors =============================================================

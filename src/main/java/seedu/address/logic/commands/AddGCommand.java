@@ -22,7 +22,7 @@ public class AddGCommand extends Command {
             + "Parameters: " + "[" + COMMAND_WORD + " <USERID> <USERNAME>]...\n"
             + "Example: " + COMMAND_WORD + " 2 alexyeoh";
 
-    public static final String MESSAGE_SUCCESS = "Github account added for: %1$s";
+    public static final String MESSAGE_SUCCESS = "Github account added.";
 
     private final Index index;
 
@@ -45,23 +45,8 @@ public class AddGCommand extends Command {
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
-
-        Person personToEdit = lastShownList.get(index.getZeroBased());
-        personToEdit.setGithub(username);
-        model.setPerson(personToEdit, personToEdit);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-
-        return new CommandResult(generateSuccessMessage(personToEdit));
-    }
-
-    /**
-     * Generates a command execution success message based on whether
-     * the username is added to or removed from
-     * {@code personToEdit}.
-     */
-    private String generateSuccessMessage(Person personToEdit) {
-        String message = !username.value.isEmpty() ? MESSAGE_SUCCESS : "";
-        return String.format(message, personToEdit.getName());
+        model.addGithub(index, username);
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 
     @Override
