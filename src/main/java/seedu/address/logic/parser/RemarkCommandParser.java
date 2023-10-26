@@ -9,10 +9,12 @@ import seedu.address.logic.commands.RemarkCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Remark;
 
+
 /**
  * Parses input arguments and creates a new {@code RemarkCommand} object
  */
 public class RemarkCommandParser implements Parser<RemarkCommand> {
+
     /**
      * Parses the given {@code String} of arguments in the context of the {@code RemarkCommand}
      * and returns a {@code RemarkCommand} object for execution.
@@ -30,8 +32,15 @@ public class RemarkCommandParser implements Parser<RemarkCommand> {
         }
 
         String remarkText = argMultimap.getValue(PREFIX_REMARK).orElse("");
-
         Remark remark = new Remark(remarkText);
+
+        if (RemarkSyntaxHandler.isKeepRemark(args)) {
+            return new RemarkCommand(index, remark, true);
+        }
+
         return new RemarkCommand(index, remark);
     }
+
+
+
 }

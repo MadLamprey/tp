@@ -24,11 +24,15 @@ public class Person {
     // Data fields
     private final Address address;
 
-    private final Remark remark;
     private final Set<Tag> tags = new HashSet<>();
     private LinkedIn linkedIn = new LinkedIn("");
     private Github github = new Github("");
-    private final Status currentStatus = new Status();
+
+    private Remark remark;
+    private Status currentStatus = new Status();
+
+
+
 
     /**
      * Every field must be present and not null.
@@ -68,9 +72,10 @@ public class Person {
         return currentStatus;
     }
 
-    /* public void setStatus(StatusTypes newType) {
-        this.currentStatus.setStatusType(newType);
-    }*/
+    public void setStatus(Status newStatus) {
+        this.currentStatus = newStatus;
+    }
+
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}

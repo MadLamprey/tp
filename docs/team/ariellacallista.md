@@ -4,11 +4,11 @@ title: "Ariella Callista's Project Portfolio Page"
 ---
 
 # Project: JABPRO
-## Overview 
+## Overview
 JABPro aims to solve the problem of HR managers having to sort through tons of job applications.
 It makes their life easier by allowing them to easily fetch important info about job applicants such as their contact details, application status etc. It serves as a one-stop addressbook for job applications.
 ## Summary of Contributions
-**Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=ariellacallista&breakdown=true)  
+**Code contributed**: [RepoSense link](https://nus-cs2103-ay2324s1.github.io/tp-dashboard/?search=ariellacallista&breakdown=true)
 
 **Enhancement implemented**:
 

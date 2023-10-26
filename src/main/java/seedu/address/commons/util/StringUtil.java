@@ -65,4 +65,20 @@ public class StringUtil {
             return false;
         }
     }
+
+    /**
+     * Returns true if {@code s} represents a non-negative integer
+     * @param s string to be checked
+     * @return true if {@code s} represents a non-negative integer
+     * @throws NullPointerException if {@code s} is null.
+     */
+    public static boolean isNonNegativeInteger(String s) {
+        requireNonNull(s);
+        try {
+            int value = Integer.parseInt(s);
+            return value >= 0 && !s.startsWith("+"); // "+1" is successfully parsed by Integer#parseInt(String)
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
 }

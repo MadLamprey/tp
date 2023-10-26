@@ -25,6 +25,8 @@ import seedu.address.testutil.PersonBuilder;
 
 public class RemarkCommandTest {
     private static final String REMARK_STUB = "Some remark";
+    private static final String KEEP_REMARK_STUB = "**REMARK** remark v2.0";
+    private static final String REPLACED_REMARK = "Some remark remark v2.0";
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
@@ -40,7 +42,7 @@ public class RemarkCommandTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
 
-        assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel, true);
     }
 
     @Test
@@ -56,7 +58,7 @@ public class RemarkCommandTest {
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
-        assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel, true);
     }
 
     @Test
@@ -68,6 +70,24 @@ public class RemarkCommandTest {
 
         RemarkCommand remarkCommand = new RemarkCommand(outOfBoundIndex, new Remark(VALID_REMARK_BOB));
         assertCommandFailure(remarkCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_keepRemarkUnfilteredList_success() {
+        // Set base person to have a remark same as REMARK_STUB
+        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
+        Person basePerson = new PersonBuilder(firstPerson).withRemark(REMARK_STUB).build();
+        model.setPerson(firstPerson, basePerson);
+        // Create a remark command with keep remark
+        RemarkCommand remarkCommand = new RemarkCommand(INDEX_FIRST_PERSON, new Remark(KEEP_REMARK_STUB),
+                true);
+        Person expectedPerson = new PersonBuilder(firstPerson).withRemark(REPLACED_REMARK).build();
+        String expectedMessage = String.format(RemarkCommand.MESSAGE_ADD_REMARK_SUCCESS,
+                Messages.format(expectedPerson));
+        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        expectedModel.setPerson(basePerson, expectedPerson);
+        // Execute the command and see how they compare
+        assertCommandSuccess(remarkCommand, model, expectedMessage, expectedModel, true);
     }
 
 

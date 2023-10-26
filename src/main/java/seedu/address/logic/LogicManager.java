@@ -73,6 +73,8 @@ public class LogicManager implements Logic {
         return model.getFilteredPersonList();
     }
 
+
+
     @Override
     public Index getLastViewedPersonIndex() {
         return model.getLastViewedPersonIndex();

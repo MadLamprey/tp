@@ -50,7 +50,24 @@ public class RemarkCommandParserTest {
         assertParseFailure(parser, userInput, MESSAGE_INVALID_FORMAT);
     }
 
+    @Test
+    public void parse_keepRemark_success() {
+        // Important to note that a remark will have trailing white spaces trimmed
+        // That is a remark with trailing white spaces will be treated as a remark without trailing white spaces
+        Index targetIndex = INDEX_FIRST_PERSON;
+        String expectedRemarkValue = "**REMARK** " + nonEmptyRemark;
+        String userInput = targetIndex.getOneBased() + " " + PREFIX_REMARK + expectedRemarkValue;
+        RemarkCommand expectedCommand = new RemarkCommand(INDEX_FIRST_PERSON, new Remark(expectedRemarkValue), true);
+        assertParseSuccess(parser, userInput, expectedCommand);
 
+        //Not a keep remark, simulate mistype
+        String wrongRemarkValue = "**REMARK* " + nonEmptyRemark;
+        String userInput2 = targetIndex.getOneBased() + " " + PREFIX_REMARK + wrongRemarkValue;
+        RemarkCommand expectedCommand2 = new RemarkCommand(INDEX_FIRST_PERSON, new Remark(wrongRemarkValue));
+        assertParseSuccess(parser, userInput2, expectedCommand2);
+
+        // No parse failure since it is not a keep remark but an original remark
+    }
 
     @Test
     public void parse_missingCompulsoryField_failure() {

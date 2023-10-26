@@ -13,7 +13,7 @@
 
 ## **Acknowledgements**
 
-This is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).  
+This is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org). 
 
 _{ list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well }_
 
@@ -280,11 +280,11 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**:  
+**Value proposition**:
 
-JABPro aims to solve the problem of HR managers having to sort through tons of job applications.  
+JABPro aims to solve the problem of HR managers having to sort through tons of job applications.
 
-It makes their life easier by allowing them to easily fetch important info about job applicants such as their contact details, application status etc.   
+It makes their life easier by allowing them to easily fetch important info about job applicants such as their contact details, application status etc.
 
 It serves as a one-stop addressbook for managing job applications.
 
@@ -299,7 +299,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 |---------|------------------|-------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
 | `* * *` | Hiring Manager   | add a candidate's contact information, including name, email, phone number                                                    | I can easily access and reach out to candidates when needed                                              |
 | `* * *` | Hiring Manager   | add notes and comments to candidate profiles to document interview feedback and impressions                                   | I can maintain a record of interactions and feedback                                                     |
-| `* * *` | Hiring Manager   | delete job applicants information                                                                                             | I can remove redundant/unecessary data bloat and also to abide to privacy laws                           | 
+| `* * *` | Hiring Manager   | delete job applicants information                                                                                             | I can remove redundant/unecessary data bloat and also to abide to privacy laws                           |
 | `* * *` | Hiring Manager   | view a specific job applicant's resume or portfolio                                                                           | I can check whether they meet the requirements requested by other department heads                       |
 | `* * *` | Hiring Manager   | search for all job applicants that have a particular skill mentioned in their application                                     | I can find suitable candidates for a project                                                             |
 | `* * *` | Hiring Manager   | List all candidate's information                                                                                              | I can easily view each candidates information                                                            |
@@ -325,15 +325,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 1. User requests to add a person.
 2. JABPro shows that command has been executed successfully.
-3. JABPro adds the person to the list of persons.   
+3. JABPro adds the person to the list of persons.
 Use case ends.
 
 **Extensions**
 * 2a. User does not provide the correct information for a person to be added.
-    * 2a1. JABPro shows an error message and provides course of action for remedy.  
+    * 2a1. JABPro shows an error message and provides course of action for remedy.
     Use case resumes at step 1.
 * 2b. User has already been added to the list of persons.
-    * 2b1. JABPro shows an error message and provides course of action for remedy.  
+    * 2b1. JABPro shows an error message and provides course of action for remedy.
     Use case resumes at step 1.
 
 **Use case: Add a remark to a person**
@@ -341,15 +341,15 @@ Use case ends.
 **MSS**
 1. User requests to add a remark to a person.
 2. JABPro shows that command has been executed successfully.
-3. JABPro adds the remark to the person.  
+3. JABPro adds the remark to the person.
 Use case ends.
 
 **Extensions**
 * 2a. User provides invalid index.
-    * 2a1. JABPro shows an error message and provides course of action for remedy.  
+    * 2a1. JABPro shows an error message and provides course of action for remedy.
     Use case resumes at step 1.
 * 2b. User does not provide a remark.
-    * 2b1. JABPro adds an empty remark to the person, remark no longer seen.  
+    * 2b1. JABPro adds an empty remark to the person, remark no longer seen.
     Use case ends.
 
 **Use case: List all persons**
@@ -357,47 +357,47 @@ Use case ends.
 **MSS**
 1. User  requests to view a list of all persons.
 2. JABPro retrieves the list of all persons from the database.
-3. JABPro displays the list of all persons to the user. 
+3. JABPro displays the list of all persons to the user.
 4. If the user specifies an attribute to sort by, e.g., "s/name" for sorting by name, the application sorts the list accordingly. If no attribute is provided, the list remains unsorted.
-5. The sorted or unsorted list is displayed to the user in ascending order based on the specified attribute.   
+5. The sorted or unsorted list is displayed to the user in ascending order based on the specified attribute.  
 Use case ends.
 
 **Extensions**
 * 2a. User provides an incorrect attribute for sorting (e.g., "list s/phone").
-  * 2a1. JABPro shows an error message and provides course of action for remedy.   
+  * 2a1. JABPro shows an error message and provides course of action for remedy.  
   Use case resumes at step 1.
 * 2b. User attempts to list persons when there are no entries in the address book.
-  * 2b1. JABPro shows a message indicating that there are no persons to display.  
+  * 2b1. JABPro shows a message indicating that there are no persons to display. 
   Use case ends.
 
 **Use case: Search a person by name**
 
 **MSS**
 1.  Hiring manager types in name keywords to search users by name.
-2.  JABPro shows a list of persons whose names contain matching keywords.  
+2.  JABPro shows a list of persons whose names contain matching keywords. 
     Use case ends.
 
 **Extensions**
 
 * 1a. The given name keyword is invalid (invalid name).
-    * 1a1. JABPro shows an error message.  
+    * 1a1. JABPro shows an error message.
       Use case resumes at step 1.
-* 2a. The list is empty.  
+* 2a. The list is empty.
   Use case ends.
 
 **Use case: Search a person by application status**
 
 **MSS**
 1.  User keys in search command with application status (i.e. interviewed, pending, rejected, offered).
-2.  JABPro shows a list of persons whose status match the given status keywords.  
+2.  JABPro shows a list of persons whose status match the given status keywords. 
     Use case ends.
 
 **Extensions**
 
 * 1a. The given name status is invalid (not from the given list of valid status keywords).
-    * 1a1. JABPro shows an error message.  
+    * 1a1. JABPro shows an error message.
       Use case resumes at step 1.
-* 2a. The list is empty.  
+* 2a. The list is empty.
   Use case ends.
 
 
@@ -407,18 +407,18 @@ Use case ends.
 1.  User requests to list persons.
 2.  AddressBook shows a list of persons.
 3.  User requests to delete a specific person in the list.
-4.  AddressBook deletes the person.  
+4.  AddressBook deletes the person.
     Use case ends.
 
 **Extensions**
 * 2a. The list is empty.
-    * 2a1. AddressBook displays a message indicating that the list is empty.  
+    * 2a1. AddressBook displays a message indicating that the list is empty.
       Use case ends.
 * 3a. The given index is invalid.
-    * 3a1. AddressBook shows an error message indicating that the specified index is invalid.  
+    * 3a1. AddressBook shows an error message indicating that the specified index is invalid.
       Use case resumes at step 3.
 * 4a. Deletion encounters an error
-    * 4a1. AddressBook displays an error message indicating that the deletion process failed.  
+    * 4a1. AddressBook displays an error message indicating that the deletion process failed.
       Use case ends.
 
 **Use case: Set a person's status**
@@ -427,18 +427,18 @@ Use case ends.
 1.  User requests to list persons.
 2.  AddressBook shows a list of persons.
 3.  User requests to set the status of a specific person in the list.
-4.  AddressBook sets the status of that person in the list.  
+4.  AddressBook sets the status of that person in the list.
     Use case ends.
 
 **Extensions**
 * 2a. The list is empty.
-    * 2a1. AddressBook displays a message indicating that the list is empty.  
+    * 2a1. AddressBook displays a message indicating that the list is empty.
       Use case ends.
 * 3a. The given index is invalid.
-    * 3a1. AddressBook shows an error message indicating that the specified index is invalid.  
+    * 3a1. AddressBook shows an error message indicating that the specified index is invalid.
       Use case resumes at step 3.
 * 3b. The given status is invalid.
-    * 3b1. AddressBook shows an error message indicating that the specified status is invalid.  
+    * 3b1. AddressBook shows an error message indicating that the specified status is invalid.
       Use case resumes at step 3.
 
 **Use case: Add social profile to person's details**
@@ -486,9 +486,9 @@ Use case ends.
 5.  Should not deal with `external database` or `network connections`.
 6.  Product is expected to be used by a `single user` only.
 7.  Product is `not expected to contain API` for other software to communicate with.
-8.  Product is expected to be used in a system with at least 4GB RAM and `1GB free disk space`. 
-9.  Product Visuals should be `unambiguous` and clear to the user 
-10. Commands should be `easy to remember` and `intuitive` to use 
+8.  Product is expected to be used in a system with at least 4GB RAM and `1GB free disk space`.
+9.  Product Visuals should be `unambiguous` and clear to the user
+10. Commands should be `easy to remember` and `intuitive` to use
 11. Product should be `consistent` in its visuals and commands formatting
 
 *{More to be added}*

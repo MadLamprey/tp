@@ -39,11 +39,11 @@ You can reach us at the email `e0958427[at]comp.nus.edu.sg`
 
 <img src="images/madlamprey.png" width="200px">
 
-[[github](http://github.com/MadLamprey)] 
+[[github](http://github.com/MadLamprey)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: Testing 
+* Responsibilities: Testing
 * In charge of: Test cases and coverage
 
 

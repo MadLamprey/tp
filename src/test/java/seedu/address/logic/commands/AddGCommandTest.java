@@ -39,7 +39,7 @@ public class AddGCommandTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
 
-        assertCommandSuccess(addGCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(addGCommand, model, expectedMessage, expectedModel, true);
     }
 
     @Test

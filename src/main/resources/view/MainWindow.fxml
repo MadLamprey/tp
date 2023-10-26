@@ -22,7 +22,7 @@
       <stylesheets>
         <URL value="@DarkTheme.css" />
         <URL value="@Extensions.css" />
-        <URL value="@Form.css" />/
+        <URL value="@Form.css" />
       </stylesheets>
 
       <VBox>

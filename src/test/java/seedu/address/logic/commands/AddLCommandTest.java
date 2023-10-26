@@ -39,7 +39,7 @@ public class AddLCommandTest {
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(firstPerson, editedPerson);
 
-        assertCommandSuccess(addLCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(addLCommand, model, expectedMessage, expectedModel, true);
     }
 
     @Test

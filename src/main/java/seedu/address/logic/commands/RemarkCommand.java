@@ -8,6 +8,7 @@ import java.util.List;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.RemarkSyntaxHandler;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Remark;
@@ -34,9 +35,9 @@ public class RemarkCommand extends Command {
     public static final String MESSAGE_ADD_REMARK_SUCCESS = "Added remark to Person: %1$s";
     public static final String MESSAGE_DELETE_REMARK_SUCCESS = "Removed remark from Person: %1$s";
 
-
     private final Index index;
     private final Remark remark;
+    private final boolean isKeepRemark;
 
     /**
      * @param index of the person in the filtered person list to edit the remark
@@ -44,10 +45,24 @@ public class RemarkCommand extends Command {
      */
     public RemarkCommand(Index index, Remark remark) {
         requireAllNonNull(index, remark);
-
         this.index = index;
         this.remark = remark;
+        this.isKeepRemark = false;
     }
+
+    /**
+     * @param index of the person in the filtered person list to edit the remark
+     * @param remark of the person to be updated to
+     * @param isKeepRemark whether to keep the old remark
+     */
+    public RemarkCommand(Index index, Remark remark, boolean isKeepRemark) {
+        requireAllNonNull(index, remark);
+        this.index = index;
+        this.remark = remark;
+        this.isKeepRemark = isKeepRemark;
+    }
+
+
     @Override
     public CommandResult execute(Model model) throws CommandException {
         List<Person> lastShownList = model.getFilteredPersonList();
@@ -57,14 +72,21 @@ public class RemarkCommand extends Command {
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
+        Remark newRemark = remark;
+        if (isKeepRemark) {
+            Remark currentRemark = personToEdit.getRemark();
+            newRemark = RemarkSyntaxHandler.generateKeepRemarkCommand(remark.value, currentRemark);
+        }
+
         Person editedPerson = new Person(
                 personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                personToEdit.getAddress(), remark, personToEdit.getTags());
+                personToEdit.getAddress(), newRemark, personToEdit.getTags());
 
         model.setPerson(personToEdit, editedPerson);
+        model.setLastViewedPersonIndex(index);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
-        return new CommandResult(generateSuccessMessage(editedPerson));
+        return new CommandResult(generateSuccessMessage(editedPerson), true);
     }
 
     /**
@@ -90,6 +112,6 @@ public class RemarkCommand extends Command {
 
         RemarkCommand e = (RemarkCommand) other;
         return index.equals(e.index)
-                && remark.equals(e.remark);
+                && remark.equals(e.remark) && isKeepRemark == e.isKeepRemark;
     }
 }

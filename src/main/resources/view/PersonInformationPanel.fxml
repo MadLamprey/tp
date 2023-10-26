@@ -21,54 +21,54 @@
             <padding>
                 <Insets top="10" />
             </padding>
-            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="60">
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="30">
                 <Label text="Name: " styleClass="cell_big_label" wrapText="true" />
-                <Label fx:id="name" text="\$first" styleClass="text-field" wrapText="true" minWidth="100"
+                <Label fx:id="name" text="\$first" styleClass="text-field" wrapText="true" minWidth="170"
                        alignment="CENTER" />
             </HBox>
 
-            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="60">
+            <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="30">
                 <Label text="Phone: " styleClass="cell_big_label" wrapText="true" />
-                <Label fx:id="phone" styleClass="text-field" text="\$phone" wrapText="true" minWidth="100"
+                <Label fx:id="phone" styleClass="text-field" text="\$phone" wrapText="true" minWidth="170"
                        alignment="CENTER" />
             </HBox>
         </HBox>
 
 
 
-        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" GridPane.columnIndex="0" spacing="100">
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" GridPane.columnIndex="0" spacing="34">
             <Label text="Email: " styleClass="cell_big_label" wrapText="true" />
-            <Label fx:id="email" styleClass="text-field" text="\$email" wrapText="true"  prefWidth="300"
+            <Label fx:id="email" styleClass="text-field" text="\$email" wrapText="true"  prefWidth="450"
                    alignment="CENTER"/>
         </HBox>
 
 
-        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" GridPane.columnIndex="0" spacing="82">
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" GridPane.columnIndex="0" spacing="15">
             <Label text="Address: " styleClass="cell_big_label" wrapText="true" />
-            <Label fx:id="address" styleClass="text-field" text="\$address" wrapText="true" prefWidth="300"
+            <Label fx:id="address" styleClass="text-field" text="\$address" wrapText="true" prefWidth="450"
                    alignment="CENTER"/>
         </HBox>
 
-        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="10" >
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="11" >
+            <Label text="LinkedIn: " styleClass="cell_big_label" wrapText="true" />
+            <Label fx:id="linkedIn" styleClass="text-field" text="\$linkedIn" wrapText="true" prefWidth="450"
+            alignment="CENTER"/>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="24" >
+            <Label text="Github: " styleClass="cell_big_label" wrapText="true" />
+            <Label fx:id="github" styleClass="text-field" text="\$github" wrapText="true" prefWidth="450"
+                   alignment="CENTER"/>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="40" >
             <Label text="Tags: " styleClass="cell_big_label" wrapText="true" />
             <FlowPane fx:id="tags" />
         </HBox>
 
-        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="10" >
-            <Label text="LinkedIn: " styleClass="cell_big_label" wrapText="true" />
-            <Label fx:id="linkedIn" styleClass="text-field" text="\$linkedIn" wrapText="true" prefWidth="300"
-            alignment="CENTER"/>
-        </HBox>
-
-        <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" spacing="10" >
-            <Label text="Github: " styleClass="cell_big_label" wrapText="true" />
-            <Label fx:id="github" styleClass="text-field" text="\$github" wrapText="true" prefWidth="300"
-                   alignment="CENTER"/>
-        </HBox>
-
         <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS" GridPane.columnIndex="0" spacing="0">
             <padding>
-                <Insets left="10" />
+                <Insets left="30" />
             </padding>
             <ToggleButton fx:id="preliminary" text="Preliminary" styleClass="stage-button" />
             <Rectangle styleClass="connection-line" width="120" strokeWidth="1"/>
@@ -80,10 +80,7 @@
         <VBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS" GridPane.columnIndex="0">
             <Label text="Remark: " styleClass="cell_big_label" wrapText="true" />
             <HBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
-                <padding>
-                    <Insets left="10" />
-                </padding>
-            <Label fx:id="remark" styleClass="text-field" text="\$remark" wrapText="true" prefWidth="450"
+            <Label fx:id="remark" alignment="TOP_LEFT" styleClass="text-field" text="\$remark" wrapText="true" prefWidth="555"
             minHeight="250"  />
             </HBox>
         </VBox>
