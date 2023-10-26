@@ -18,8 +18,6 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Github;
-import seedu.address.model.person.Person;
-import seedu.address.testutil.PersonBuilder;
 
 public class AddGCommandTest {
     private static final String GITHUB_STUB = "Someusername";
@@ -28,18 +26,14 @@ public class AddGCommandTest {
 
     @Test
     public void execute_addRemarkUnfilteredList_success() {
-        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(firstPerson).withGithub(GITHUB_STUB).build();
-        editedPerson.setGithub(new Github("xyz"));
+        AddGCommand addGCommand = new AddGCommand(INDEX_FIRST_PERSON, new Github("xyz"));
 
-        AddGCommand addGCommand = new AddGCommand(INDEX_FIRST_PERSON, new Github(editedPerson.getGithub().value));
-
-        String expectedMessage = String.format(AddGCommand.MESSAGE_SUCCESS, editedPerson.getName());
+        String expectedMessage = String.format(AddGCommand.MESSAGE_SUCCESS);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setPerson(firstPerson, editedPerson);
+        expectedModel.addGithub(INDEX_FIRST_PERSON, new Github("xyz"));
 
-        assertCommandSuccess(addGCommand, model, expectedMessage, expectedModel, true);
+        assertCommandSuccess(addGCommand, model, expectedMessage, expectedModel, false);
     }
 
     @Test

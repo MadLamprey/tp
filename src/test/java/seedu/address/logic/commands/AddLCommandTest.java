@@ -18,8 +18,6 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.LinkedIn;
-import seedu.address.model.person.Person;
-import seedu.address.testutil.PersonBuilder;
 
 public class AddLCommandTest {
     private static final String LINKEDIN_STUB = "Someusername";
@@ -28,18 +26,14 @@ public class AddLCommandTest {
 
     @Test
     public void execute_addRemarkUnfilteredList_success() {
-        Person firstPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
-        Person editedPerson = new PersonBuilder(firstPerson).withLinkedIn(LINKEDIN_STUB).build();
-        editedPerson.setLinkedIn(new LinkedIn("xyz"));
+        AddLCommand addLCommand = new AddLCommand(INDEX_FIRST_PERSON, new LinkedIn("xyz"));
 
-        AddLCommand addLCommand = new AddLCommand(INDEX_FIRST_PERSON, new LinkedIn(editedPerson.getLinkedIn().value));
-
-        String expectedMessage = String.format(AddLCommand.MESSAGE_SUCCESS, editedPerson.getName());
+        String expectedMessage = String.format(AddLCommand.MESSAGE_SUCCESS);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
-        expectedModel.setPerson(firstPerson, editedPerson);
+        expectedModel.addLinkedIn(INDEX_FIRST_PERSON, new LinkedIn("xyz"));
 
-        assertCommandSuccess(addLCommand, model, expectedMessage, expectedModel, true);
+        assertCommandSuccess(addLCommand, model, expectedMessage, expectedModel, false);
     }
 
     @Test

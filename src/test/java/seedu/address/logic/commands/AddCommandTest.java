@@ -26,6 +26,8 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.person.Github;
+import seedu.address.model.person.LinkedIn;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
@@ -149,6 +151,16 @@ public class AddCommandTest {
 
         @Override
         public void setPerson(Person target, Person editedPerson) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addGithub(Index index, Github github) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addLinkedIn(Index index, LinkedIn linkedIn) {
             throw new AssertionError("This method should not be called.");
         }
 
