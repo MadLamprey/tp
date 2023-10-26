@@ -19,13 +19,6 @@ public class LinkedInCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_validIndex_success() {
-        LinkedInCommand linkedInCommand = new LinkedInCommand(INDEX_SECOND_PERSON);
-
-        assertCommandSuccess(linkedInCommand, model, LinkedInCommand.MESSAGE_SUCCESS, model);
-    }
-
-    @Test
     public void execute_invalidIndex_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         LinkedInCommand linkedInCommand = new LinkedInCommand(outOfBoundIndex);

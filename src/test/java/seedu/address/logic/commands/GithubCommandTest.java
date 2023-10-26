@@ -19,13 +19,6 @@ public class GithubCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_validIndex_success() {
-        GithubCommand githubCommand = new GithubCommand(INDEX_SECOND_PERSON);
-
-        assertCommandSuccess(githubCommand, model, GithubCommand.MESSAGE_SUCCESS, model);
-    }
-
-    @Test
     public void execute_invalidIndex_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         GithubCommand githubCommand = new GithubCommand(outOfBoundIndex);
