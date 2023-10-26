@@ -95,12 +95,10 @@ public class Status {
     public boolean equals(Object other) {
         if (this == other) {
             return true;
-        }
-        else {
+        } else {
             if (other instanceof Status) {
                 return this.statusType == ((Status) other).statusType;
-            }
-            else {
+            } else {
                 return false;
             }
         }
