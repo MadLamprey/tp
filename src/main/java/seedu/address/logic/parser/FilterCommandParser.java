@@ -70,9 +70,7 @@ public class FilterCommandParser implements Parser<FilterCommand> {
             throw new ParseException(String.format(FilterCommand.MESSAGE_INVALID_VALUE));
         }
 
-
         int value = Integer.parseInt(argMultimap.getValue(PREFIX_VALUE).get());
-
 
         return new FilterCommand(tag, metric, value);
     }

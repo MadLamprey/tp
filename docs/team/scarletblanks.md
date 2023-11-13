@@ -22,10 +22,29 @@ It makes their life easier by allowing them to easily fetch important info about
 * Added set & Export to Command Summary
 
 **Contribution to DG**:
-* Contributed to DG for non-functional requirements
+* Contributed to the section 'Planned enhancements' for export
+* Contributed to the Appendix for 'Flexibility'
+* Contributed to test cases for 'set' and 'export'
+* Contributed to MSS for 'set' and 'export'
+* Contributed to user stories relevant to 'set' and 'export'
+* Contributed to the implementation section of 'set' and 'export'
+* Contributed to the diagrams for 'set' and 'export'
 
 **Contribution to team-based tasks**:
 * Code quality: Looks after code quality, ensures adherence to coding standards
 * OOP Review: Review PRs and ensures adherence to Object-Oriented Programming standards
 * Checks PRs for consistency between new code and previous code
-* Modification of 'help' to link to user guide
+
+**Reviewing/mentoring contributions**:
+* Reviewing of PRs 
+* Advising changes with regard to OOP and consistency with the way objects are used.
+
+**PRs reviewed**
+* https://github.com/AY2324S1-CS2103T-W09-4/tp/pull/79 (commented on OOP abstraction)
+* https://github.com/AY2324S1-CS2103T-W09-4/tp/pull/47 (commented on OOP & suggested using method overloading)
+* https://github.com/AY2324S1-CS2103T-W09-4/tp/pull/192
+* https://github.com/AY2324S1-CS2103T-W09-4/tp/pull/190
+* https://github.com/AY2324S1-CS2103T-W09-4/tp/pull/189
+* https://github.com/AY2324S1-CS2103T-W09-4/tp/pull/168
+* https://github.com/AY2324S1-CS2103T-W09-4/tp/pull/162
+* https://github.com/AY2324S1-CS2103T-W09-4/tp/pull/161

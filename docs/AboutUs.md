@@ -16,7 +16,7 @@ You can reach us at the email `e0958427[at]comp.nus.edu.sg`
 <img src="images/sk2001git.png" width="200px">
 
 [[github](https://github.com/sk2001git)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/sk2001git.md)]
 
 * Role: Developer
 * Responsibilities: Deliverables & Deadlines, Integration
@@ -29,7 +29,7 @@ You can reach us at the email `e0958427[at]comp.nus.edu.sg`
 <img src="images/ariellacallista.png" width="200px">
 
 [[github](http://github.com/AriellaCallista)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/ariellacallista.md)]
 
 * Role: Team Lead
 * Responsibilities: Documentation
@@ -40,7 +40,7 @@ You can reach us at the email `e0958427[at]comp.nus.edu.sg`
 <img src="images/madlamprey.png" width="200px">
 
 [[github](http://github.com/MadLamprey)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/madlamprey.md)]
 
 * Role: Developer
 * Responsibilities: Testing
@@ -52,7 +52,7 @@ You can reach us at the email `e0958427[at]comp.nus.edu.sg`
 <img src="images/ketweeen.png" width="200px">
 
 [[github](http://github.com/ketweeen)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/ketween.md)]
 
 * Role: Developer
 * Responsibilities: Scheduling and tracking
