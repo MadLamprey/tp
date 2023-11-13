@@ -18,7 +18,7 @@ public class AddLCommand extends Command {
     public static final String COMMAND_WORD = "addL";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds LinkedIn to details of a candidate. "
             + "Parameters: " + "[" + COMMAND_WORD
-            + " <USERID> u/<USERNAME>]...\nwhere USERID must be a non-zero unsigned integer, "
+            + " <INDEX> u/<USERNAME>]...\nwhere INDEX must be a non-zero unsigned integer, "
             + "and within bounds of list size\n"
             + "Example: " + COMMAND_WORD + " 2 u/alexyeoh";
 

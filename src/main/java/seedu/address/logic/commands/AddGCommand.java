@@ -18,8 +18,8 @@ public class AddGCommand extends Command {
     public static final String COMMAND_WORD = "addG";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds Github to details of a candidate. "
-            + "Parameters: " + "[" + COMMAND_WORD + " <USERID> u/<USERNAME>]...\n"
-            + "where USERID must be a non-zero unsigned integer, and within bounds of list size\n"
+            + "Parameters: " + "[" + COMMAND_WORD + " <INDEX> u/<USERNAME>]...\n"
+            + "where INDEX must be a non-zero unsigned integer, and within bounds of list size\n"
             + "Example: " + COMMAND_WORD + " 2 u/alexyeoh";
 
     public static final String MESSAGE_SUCCESS = "Github account added for: %1$s";

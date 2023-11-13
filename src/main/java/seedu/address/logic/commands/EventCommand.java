@@ -19,7 +19,8 @@ public class EventCommand extends Command {
 
     public static final String COMMAND_WORD = "event";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds Event relating to a candidate. "
-            + "Parameters: " + "[" + COMMAND_WORD + " <USERID> d/<DESCRIPTION> bt/<BEGIN_TIME> et/<END_TIME>]...\n"
+            + "Parameters: " + "[" + COMMAND_WORD + " <INDEX> d/<DESCRIPTION> bt/<BEGIN_TIME> et/<END_TIME>]...\n"
+            + "where INDEX must be a non-zero unsigned integer.\n"
             + "Example: " + COMMAND_WORD + " 2 d/Interview Round 1 bt/2023-10-22 09:00 et/2023-10-22 10:00";
 
     public static final String MESSAGE_SUCCESS = "Event added: %1$s";

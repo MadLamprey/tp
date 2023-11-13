@@ -19,8 +19,8 @@ public class GithubCommand extends Command {
 
     public static final String COMMAND_WORD = "github";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Redirects to user's Github account. "
-            + "Parameters: " + "[" + COMMAND_WORD + " <USERID>]...\n"
-            + "where USERID must be a non-zero unsigned integer, and within bounds of list size\n"
+            + "Parameters: " + "[" + COMMAND_WORD + " <INDEX>]...\n"
+            + "where INDEX must be a non-zero unsigned integer, and within bounds of list size\n"
             + "Example: " + COMMAND_WORD + " 2";
     public static final String MESSAGE_SUCCESS = "Redirecting to Github ...";
 
